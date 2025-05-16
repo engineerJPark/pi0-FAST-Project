@@ -4,7 +4,7 @@ import os
 
 def check_tfrecords(directory):
     print(f"검사 중인 디렉토리: {directory}")
-    files = glob.glob(f"{directory}/**/*.tfrecord", recursive=True)
+    files = glob.glob(f"{directory}/**/*.tfrecord*", recursive=True)
     print(f"발견된 TFRecord 파일 수: {len(files)}")
     
     for file in files:
