@@ -544,7 +544,7 @@ _CONFIGS = [
         data=LeRobotLiberoDataConfig(
             repo_id="physical-intelligence/libero",
             base_config=DataConfig(
-                local_files_only=False,  # Set to True for local-only datasets.
+                local_files_only=True, # False,  # Set to True for local-only datasets.
                 prompt_from_task=True,
             ),
         ),
