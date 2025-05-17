@@ -631,7 +631,7 @@ _CONFIGS = [
     TrainConfig(
         name="debug",
         data=FakeDataConfig(),
-        batch_size=2,
+        batch_size=1, # 2,
         model=pi0.Pi0Config(paligemma_variant="dummy", action_expert_variant="dummy"),
         save_interval=100,
         overwrite=True,
@@ -642,7 +642,7 @@ _CONFIGS = [
     TrainConfig(
         name="debug_restore",
         data=FakeDataConfig(),
-        batch_size=2,
+        batch_size=1, # 2,
         model=pi0.Pi0Config(paligemma_variant="dummy", action_expert_variant="dummy"),
         weight_loader=weight_loaders.CheckpointWeightLoader("./checkpoints/debug/debug/9/params"),
         overwrite=True,
