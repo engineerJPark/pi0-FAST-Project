@@ -127,7 +127,7 @@ class FASTTokenizer:
         return self._paligemma_tokenizer.vocab_size() - 1 - self._fast_skip_tokens - tokens
 
 
-class AdvancedFASTTokenizer:
+class OursFASTTokenizer:
     def __init__(self, max_len: int = 256, fast_tokenizer_path: str = "physical-intelligence/fast"):
         self._max_len = max_len
 
@@ -159,7 +159,7 @@ class AdvancedFASTTokenizer:
         # state_str = " ".join(map(str, discretized_state))
         # prefix = f"Task: {cleaned_text}, State: {state_str};\n"
         # prefix_tokens = self._paligemma_tokenizer.encode(prefix, add_bos=True)
-        
+
         # Convention: prefix includes prompt and string-representation of state, followed by ';'
         # Task 라벨은 그대로 sub-word 로, state 는 **토큰 ID 직삽입**
         prefix_text = f"Task: {cleaned_text}, State:"
