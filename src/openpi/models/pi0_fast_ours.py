@@ -73,7 +73,7 @@ def put_along_last_axis(arr, indices, values):
 
 
 @dataclasses.dataclass(frozen=True)
-class Pi0FASTConfig(_model.BaseModelConfig):
+class Pi0FASTOURSConfig(_model.BaseModelConfig):
     dtype: str = "bfloat16"
     paligemma_variant: _gemma.Variant = "gemma_2b"
 
@@ -88,8 +88,8 @@ class Pi0FASTConfig(_model.BaseModelConfig):
         return _model.ModelType.PI0_FAST
 
     @override
-    def create(self, rng: at.KeyArrayLike) -> "Pi0FAST":
-        return Pi0FAST(self, rngs=nnx.Rngs(rng))
+    def create(self, rng: at.KeyArrayLike) -> "Pi0FASTOURS":
+        return Pi0FASTOURS(self, rngs=nnx.Rngs(rng))
 
     @override
     def inputs_spec(self, *, batch_size: int = 1) -> tuple[_model.Observation, _model.Actions]:
@@ -125,8 +125,8 @@ class Pi0FASTConfig(_model.BaseModelConfig):
         return nnx.Nothing
 
 
-class Pi0FAST(_model.BaseModel):
-    def __init__(self, config: Pi0FASTConfig, rngs: nnx.Rngs):
+class Pi0FASTOURS(_model.BaseModel):
+    def __init__(self, config: Pi0FASTOURSConfig, rngs: nnx.Rngs):
         super().__init__(config.action_dim, config.action_horizon, config.max_token_len)
         paligemma_config = _gemma.get_config(config.paligemma_variant)
         # TODO: rewrite gemma in NNX. For now, use bridge.
